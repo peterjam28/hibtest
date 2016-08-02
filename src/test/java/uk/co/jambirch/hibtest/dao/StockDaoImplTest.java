@@ -85,4 +85,15 @@ public class StockDaoImplTest {
         verify(session, times(1)).delete(stock2);
     }
 
+    @Test
+    public void testDeleteAll()
+    {
+        StockDao dao = new StockDaoImpl(sessionFactory);
+        when(session.createQuery("delete from Stock", Stock.class)).thenReturn(q);
+        dao.deleteAll();
+        verify(sessionFactory, times(1)).getCurrentSession();
+        verify(session, times(1)).createQuery("delete from Stock", Stock.class);
+        verify(q, times(1)).executeUpdate();
+    }
+
 }

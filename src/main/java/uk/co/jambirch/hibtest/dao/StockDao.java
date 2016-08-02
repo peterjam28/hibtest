@@ -8,5 +8,5 @@ public interface StockDao {
     Stock findByStockCode(String stockCode);
     void update(Stock stock);
     void delete(Stock stock);
-    int deleteAll();
+    void deleteAll();
 }

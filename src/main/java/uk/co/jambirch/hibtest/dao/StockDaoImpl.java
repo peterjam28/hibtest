@@ -32,9 +32,9 @@ public class StockDaoImpl implements StockDao{
         sessionFactory.getCurrentSession().delete(stock);
     }
 
-    public int deleteAll(){
-        Query q = sessionFactory.getCurrentSession().createQuery("delete from Stock");
-        return q.executeUpdate();
+    public void deleteAll(){
+        Query<Stock> q = sessionFactory.getCurrentSession().createQuery("delete from Stock", Stock.class);
+        q.executeUpdate();
     }
 
     public Stock findByStockCode(String stockCode){

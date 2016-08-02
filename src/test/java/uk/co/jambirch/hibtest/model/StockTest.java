@@ -1,11 +1,8 @@
 package uk.co.jambirch.hibtest.model;
 
-import org.hibernate.SessionFactory;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -29,14 +26,12 @@ public class StockTest {
     private static final ApplicationContext CTX = new AnnotationConfigApplicationContext(TestConfig.class);
 
     private static StockBo stockBo;
-    private static StockDao stockDao;
 
     @BeforeClass
     public static void setUpBean(){
         stockBo = CTX.getBean("stockBo", StockBo.class);
-        stockDao = CTX.getBean("stockDao", StockDao.class);
 
-        stockDao.deleteAll();
+        CTX.getBean("stockDao", StockDao.class).deleteAll();
     }
 
     @Test
