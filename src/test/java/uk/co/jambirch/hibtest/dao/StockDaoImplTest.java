@@ -89,10 +89,10 @@ public class StockDaoImplTest {
     public void testDeleteAll()
     {
         StockDao dao = new StockDaoImpl(sessionFactory);
-        when(session.createQuery("delete from Stock", Stock.class)).thenReturn(q);
+        when(session.createQuery("delete from Stock")).thenReturn(q);
         dao.deleteAll();
         verify(sessionFactory, times(1)).getCurrentSession();
-        verify(session, times(1)).createQuery("delete from Stock", Stock.class);
+        verify(session, times(1)).createQuery("delete from Stock");
         verify(q, times(1)).executeUpdate();
     }
 

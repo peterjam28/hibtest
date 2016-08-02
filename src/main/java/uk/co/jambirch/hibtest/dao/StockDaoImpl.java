@@ -33,7 +33,7 @@ public class StockDaoImpl implements StockDao{
     }
 
     public void deleteAll(){
-        Query<Stock> q = sessionFactory.getCurrentSession().createQuery("delete from Stock", Stock.class);
+        Query q = sessionFactory.getCurrentSession().createQuery("delete from Stock");
         q.executeUpdate();
     }
 
